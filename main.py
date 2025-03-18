@@ -1,7 +1,9 @@
 
+from stats import get_num_words
+
 def main():
     book_text = open_book('./books/frankenstein.txt')
-    word_count = count_words(book_text)
+    word_count = get_num_words(book_text)
     character_counts = count_characters(book_text)
     character_list = convert_to_alphabet_list(character_counts)
     character_list.sort(reverse=True,key=sort_by_count_callback)
@@ -11,10 +13,6 @@ def main():
 def open_book(path):
     with open(path) as book:
         return book.read()
-
-def count_words(text):
-    words = text.split()
-    return len(words)
 
 def count_characters(text):
     lowercase_text = text.lower()
